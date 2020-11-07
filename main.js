@@ -9,7 +9,6 @@ let numberB;
 
 
 function start() {
-
     /**
      * demande du choix de l'operation : 
      */
@@ -20,18 +19,20 @@ function start() {
         "4 - Division \n"
     ));
 
-
     /**
      * demande de deux chiffres concernés
      */
     if (choixOperation > 0 && choixOperation < 5) {
         numberA = parseInt(prompt("Choix 1ère valeur : "));
+        if (isNaN(numberA)) {
+            alert("seules les valeurs numeriques sont acceptées");
+            start();
+        };
         numberB = parseInt(prompt("Choix 2ème valeur : "));
-
-        // vérifier que numberA et numberB sont bien des nombres avant de lancer le calcul !!!!
-
-
-        // lancer le calcul :
+        if (isNaN(numberB)) {
+            alert("seules les valeurs numeriques sont acceptées");
+            start();
+        };
         calcul();
     } else {
         //le chiffre entré n'est pas conforme à la proposition
@@ -39,12 +40,9 @@ function start() {
         // retour vers la demande du choix de l'opération
         start();
     }
-
 }
 
 start();
-
-
 
 /**
  * les fonctions de calculs
@@ -94,7 +92,7 @@ function calcul() {
             break;
         default:
             alert("une erreur est survenue lors du calcul! \n" +
-             "Veuillez recommencer l'operation!");
+                "Veuillez recommencer l'operation!");
             start();
             break;
     }
