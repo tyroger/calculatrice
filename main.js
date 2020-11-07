@@ -9,7 +9,7 @@ let numberB;
 
 
 function start() {
-    
+
     /**
      * demande du choix de l'operation : 
      */
@@ -22,12 +22,22 @@ function start() {
 
 
     /**
-     * demande de deux chiffres concernés :
+     * demande de deux chiffres concernés
      */
-    if (choixOperation) {
+    if (choixOperation > 0 && choixOperation < 5) {
         numberA = parseInt(prompt("Choix 1ère valeur : "));
         numberB = parseInt(prompt("Choix 2ème valeur : "));
+
+        // vérifier que numberA et numberB sont bien des nombres avant de lancer le calcul !!!!
+
+
+        // lancer le calcul :
         calcul();
+    } else {
+        //le chiffre entré n'est pas conforme à la proposition
+        alert("Choix inconnu");
+        // retour vers la demande du choix de l'opération
+        start();
     }
 
 }
@@ -57,6 +67,7 @@ function multiplication() {
 function division() {
     if (numberB === 0) {
         alert("division par zéro impossible");
+        start();
     } else {
         let result = (numberA / numberB);
         return alert(numberA + " / " + numberB + " = " + result);
@@ -82,6 +93,9 @@ function calcul() {
             division();
             break;
         default:
+            alert("une erreur est survenue lors du calcul! \n" +
+             "Veuillez recommencer l'operation!");
+            start();
             break;
     }
 }
